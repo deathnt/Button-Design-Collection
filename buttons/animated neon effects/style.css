@@ -1,0 +1,261 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #0a0e27;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 65, 108, 0.15), transparent 50%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+h1 {
+    color: #00f3ff;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 
+        0 0 10px #00f3ff,
+        0 0 20px #00f3ff,
+        0 0 30px #00f3ff;
+    animation: neonFlicker 3s ease-in-out infinite;
+}
+
+.description {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+
+/* Neon Button Styles */
+.neon-btn {
+    position: relative;
+    padding: 20px 60px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #00f3ff;
+    background: transparent;
+    border: 2px solid #00f3ff;
+    border-radius: 0;
+    cursor: pointer;
+    overflow: visible;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-family: 'Courier New', monospace;
+    box-shadow: 
+        inset 0 0 10px rgba(0, 243, 255, 0.4),
+        0 0 10px rgba(0, 243, 255, 0.4),
+        0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Neon corner lines */
+.neon-line {
+    position: absolute;
+    background: #ff416c;
+    box-shadow: 
+        0 0 10px #ff416c,
+        0 0 20px #ff416c;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.neon-line:nth-child(2) {
+    top: -2px;
+    left: -2px;
+    width: 0;
+    height: 2px;
+}
+
+.neon-line:nth-child(3) {
+    top: -2px;
+    right: -2px;
+    width: 2px;
+    height: 0;
+}
+
+.neon-line:nth-child(4) {
+    bottom: -2px;
+    right: -2px;
+    width: 0;
+    height: 2px;
+}
+
+.neon-line:nth-child(5) {
+    bottom: -2px;
+    left: -2px;
+    width: 2px;
+    height: 0;
+}
+
+/* Hover Effects */
+.neon-btn:hover {
+    color: #ff416c;
+    border-color: #ff416c;
+    background: rgba(255, 65, 108, 0.1);
+    box-shadow: 
+        inset 0 0 20px rgba(255, 65, 108, 0.5),
+        0 0 20px rgba(255, 65, 108, 0.6),
+        0 0 40px rgba(255, 65, 108, 0.4),
+        0 0 60px rgba(255, 65, 108, 0.2);
+    transform: scale(1.05);
+}
+
+.neon-btn:hover .neon-line {
+    opacity: 1;
+}
+
+.neon-btn:hover .neon-line:nth-child(2) {
+    width: 30px;
+    transition-delay: 0s;
+}
+
+.neon-btn:hover .neon-line:nth-child(3) {
+    height: 30px;
+    transition-delay: 0.15s;
+}
+
+.neon-btn:hover .neon-line:nth-child(4) {
+    width: 30px;
+    transition-delay: 0.3s;
+}
+
+.neon-btn:hover .neon-line:nth-child(5) {
+    height: 30px;
+    transition-delay: 0.45s;
+}
+
+.neon-btn:active {
+    transform: scale(0.98);
+    box-shadow: 
+        inset 0 0 30px rgba(255, 65, 108, 0.7),
+        0 0 15px rgba(255, 65, 108, 0.5);
+}
+
+/* Before pseudo-element for scanning effect */
+.neon-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 243, 255, 0.3),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.neon-btn:hover::before {
+    left: 100%;
+}
+
+/* After pseudo-element for glow pulse */
+.neon-btn::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    opacity: 0;
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes neonFlicker {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px #00f3ff,
+            0 0 20px #00f3ff,
+            0 0 30px #00f3ff,
+            0 0 40px #00f3ff;
+    }
+    50% {
+        text-shadow: 
+            0 0 5px #00f3ff,
+            0 0 10px #00f3ff,
+            0 0 15px #00f3ff,
+            0 0 20px #00f3ff;
+    }
+}
+
+@keyframes neonPulse {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+    
+    .description {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+    
+    .neon-btn {
+        padding: 16px 45px;
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .description {
+        font-size: 0.8rem;
+        padding: 0 1rem;
+    }
+    
+    .neon-btn {
+        padding: 14px 35px;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+}
+

@@ -422,12 +422,6 @@ If you experience or witness unacceptable behavior, please report it to the repo
 
 ---
 
-## Questions?
-
-If you have questions about contributing, feel free to:
-- Open an issue with the `question` label
-- Check existing issues and discussions
-- Reach out to the maintainers
 
 ## Thank You! 🙏
 

@@ -1,0 +1,245 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2d3561 0%, #c05c7e 50%, #f3826f 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animated background pattern */
+body::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255,255,255,.03) 50px, rgba(255,255,255,.03) 100px);
+    animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100px); }
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.2);
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.description {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 0.8s ease-out 0.2s both;
+}
+
+/* Button wrapper for 3D perspective */
+.button-wrapper {
+    perspective: 1000px;
+    display: inline-block;
+}
+
+/* 3D Flip Button Styles */
+.flip-btn {
+    position: relative;
+    width: 220px;
+    height: 70px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.flip-btn:hover {
+    transform: rotateX(180deg);
+}
+
+.flip-btn:active {
+    transform: rotateX(180deg) scale(0.95);
+}
+
+/* Button faces */
+.btn-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Front face */
+.btn-front {
+    background: linear-gradient(145deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-front::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.2), transparent);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+/* Back face */
+.btn-back {
+    background: linear-gradient(145deg, #f093fb 0%, #f5576c 100%);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    transform: rotateX(180deg);
+}
+
+.btn-back::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.3), transparent);
+    border-radius: 12px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Text styling */
+.text {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Depth shadow effect */
+.flip-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 10%;
+    width: 80%;
+    height: 20px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4), transparent);
+    border-radius: 50%;
+    transition: all 0.6s ease;
+}
+
+.flip-btn:hover::after {
+    bottom: -10px;
+    opacity: 0.6;
+    transform: scale(0.9);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .description {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .flip-btn {
+        width: 200px;
+        height: 65px;
+    }
+    
+    .btn-face {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .description {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .flip-btn {
+        width: 180px;
+        height: 60px;
+    }
+    
+    .btn-face {
+        font-size: 1rem;
+    }
+}

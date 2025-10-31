@@ -56,14 +56,3 @@ This button works in all modern browsers that support:
 - CSS3 Transforms
 - CSS3 Transitions
 
-## Contributing
-
-If you'd like to improve this button or add variations, please refer to the main [CONTRIBUTING.md](../../CONTRIBUTING.md) file in the repository root.
-
-## License
-
-This project is part of the Button Design Collection and follows the repository's main license.
-
----
-
-**Happy Coding! 🚀**

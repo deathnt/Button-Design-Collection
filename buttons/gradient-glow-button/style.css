@@ -52,7 +52,7 @@ h1 {
 .gradient-glow-btn::before {
     content: '';
     position: absolute;
-    top: -2px;
+    top: -3px;
     left: -2px;
     right: -2px;
     bottom: -2px;

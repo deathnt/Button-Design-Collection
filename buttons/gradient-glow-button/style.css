@@ -1,0 +1,96 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient Glow Button Styles */
+.gradient-glow-btn {
+    position: relative;
+    padding: 20px 60px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(45deg, #ff6ec4, #7873f5, #4facfe);
+    background-size: 200% 200%;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 20px rgba(127, 115, 245, 0.5);
+    animation: gradientShift 3s ease infinite;
+}
+
+.gradient-glow-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.gradient-glow-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff6ec4, #7873f5, #4facfe, #ff6ec4);
+    background-size: 400% 400%;
+    border-radius: 50px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: gradientShift 3s ease infinite;
+}
+
+.gradient-glow-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 40px rgba(127, 115, 245, 0.8),
+                0 0 60px rgba(255, 110, 196, 0.6),
+                0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.gradient-glow-btn:hover::before {
+    opacity: 1;
+}
+
+.gradient-glow-btn:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 0 30px rgba(127, 115, 245, 0.6),
+                0 0 50px rgba(255, 110, 196, 0.4);
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

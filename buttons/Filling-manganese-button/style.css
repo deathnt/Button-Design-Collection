@@ -1,0 +1,76 @@
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: aliceblue;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  background: none;
+  padding: 10px;
+  width: 200px;
+  border-radius: 60px;
+  border: 2px solid rgb(0, 2, 3);
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn:hover {
+  transform: rotate(-5deg);
+  transition-duration: 800ms;
+  color: black;
+  text-shadow: 1px 0 2px rgb(212, 0, 255);
+  border: 2px solid rgb(50, 0, 59);
+  cursor: pointer;
+}
+.btn::before {
+  content: "";
+  display: block;
+  background: linear-gradient(0deg, aliceblue, #d3d2fc, #d5abff);
+  border-radius: 60px;
+}
+
+.shadow::before {
+  width: 130%;
+  height: 0;
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  transition: 0.5s;
+  z-index: -1;
+}
+
+/*half filling button */
+.shadow:hover::before {
+  height: 82%;
+  width: 200%;
+  left: 0;
+  transform: rotate(5deg);
+  border-radius: 0;
+}
+
+/*full filling button */
+.shadow:active::before {
+  transition: 0.7s;
+  height: 130%;
+  width: 200%;
+}
+
+.shadow:focus {
+  box-shadow: 0px 0px 5px #d5abff;
+  transform: rotate(-5deg);
+}

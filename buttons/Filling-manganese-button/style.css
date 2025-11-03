@@ -44,7 +44,7 @@ body {
   border-radius: 60px;
 }
 
-.shadow::before {
+.filling-manganese::before {
   width: 130%;
   height: 0;
   position: absolute;
@@ -55,7 +55,7 @@ body {
 }
 
 /*half filling button */
-.shadow:hover::before {
+.filling-manganese:hover::before {
   height: 82%;
   width: 200%;
   left: 0;
@@ -64,13 +64,13 @@ body {
 }
 
 /*full filling button */
-.shadow:active::before {
+.filling-manganese:active::before {
   transition: 0.7s;
   height: 130%;
   width: 200%;
 }
 
-.shadow:focus {
+.filling-manganese:focus {
   box-shadow: 0px 0px 5px #d5abff;
   transform: rotate(-5deg);
 }
